@@ -26,4 +26,5 @@ Roslyn code analyzers for common NContext mistakes
 ## Notes on the VSIX package
 - I've implemented this as a Visual Studio extension to make demoing simpler.
 - You can also make code analyzers into NuGet packages that can be installed on a per-project basis.
-- If we decide to go forward with something like this, we could make it an additional package included with NContext, so that by installing NContext in a project, you would also get the analyzers, without requiring that project creators remember to install it, or that devs remember to install the VS extension.
+- If we decide to go forward with something like this, we could make it an additional package included with NContext, so that by installing NContext in a project, you would also get the analyzers, without requiring that project creators remember to install it, or that devs remember to install the VS extension. (This may not be a good idea if we assume there will be non-C# NContext clients.)
+- IMPORTANT: If using an analyzer deployed as a VS extension, rather than a project package, you must check the checkbox _Tools > Options > Text Editor > C# > Advanced > Enable full solution analysis_ or the analysis will only be performed on open files as part of Intellisense, and not when building the solution.  (Very surprising default behavior.)
